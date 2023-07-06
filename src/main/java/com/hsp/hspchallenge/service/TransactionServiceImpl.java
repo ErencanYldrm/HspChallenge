@@ -40,5 +40,9 @@ public class TransactionServiceImpl implements TransactionService{
         transactionRepository.deleteById(transactionId);
     }
 
+    public List<Transaction> getTransactionsByCategoryId(Long id) {
+        return transactionRepository.getTransactionsByCategoryId(id);
+    }
+
 
 }

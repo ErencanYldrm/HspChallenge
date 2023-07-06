@@ -12,4 +12,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     List<Transaction> findByDateAfter(LocalDate startDate);
 
+    List<Transaction> getTransactionsByCategoryId(Long id);
+
 }

@@ -53,4 +53,10 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
 
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Transaction>> getTransactionsByCategory(@PathVariable Long categoryId) {
+        List<Transaction> transactions = transactionService.getTransactionsByCategoryId(categoryId);
+        return ResponseEntity.ok(transactions);
+    }
+
 }
