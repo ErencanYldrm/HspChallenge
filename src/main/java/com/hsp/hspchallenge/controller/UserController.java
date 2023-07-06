@@ -54,4 +54,6 @@ public class UserController {
         userService.logoutUser();
         return ResponseEntity.ok().build();
     }
+
+
 }

@@ -19,16 +19,21 @@ import java.util.List;
 @RequestMapping("/api/transaction")
 public class TransactionController {
     private final TransactionService transactionService;
+    private final UserService userService;
 
     @Autowired
-    public TransactionController(TransactionService transactionService){
+    public TransactionController(TransactionService transactionService , UserService userService){
         this.transactionService = transactionService;
+        this.userService = userService;
 
     }
 
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction newTransaction = transactionService.createTransaction(transaction);
+        User user = userService.getUserById(transaction.getUserId());
+        user.setBalance(user.getBalance().subtract(transaction.getAmount()));
+        userService.updateUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTransaction);
     }
 

@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService{
     public User getCurrentUser() {
         return currentUser;
     }
+
+    public User updateUser(User user) {
+        User updatedUser = userRepository.save(user);
+        return updatedUser;
+    }
 }
