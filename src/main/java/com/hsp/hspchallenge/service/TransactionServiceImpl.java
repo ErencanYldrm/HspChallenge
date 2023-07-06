@@ -36,5 +36,9 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepository.findByDateBetween(startDate, endDate);
     }
 
+    public void deleteTransaction(Long transactionId) {
+        transactionRepository.deleteById(transactionId);
+    }
+
 
 }
