@@ -28,8 +28,8 @@ public class TransactionServiceImpl implements TransactionService{
         return transaction1;
     }
 
-    public List<Transaction> getTransactionsByUser(User user) {
-        return transactionRepository.findByUser(user);
+    public List<Transaction> getTransactionsByUserId(Long id) {
+        return transactionRepository.findByUserId(id);
     }
 
     public List<Transaction> getTransactionsByDateRange(LocalDate startDate, LocalDate endDate) {

@@ -9,5 +9,7 @@ public interface UserService {
     User loginUser(String email, String password);
 
     User getCurrentUser();
+
+    User getUserById(Long id);
     void logoutUser();
 }

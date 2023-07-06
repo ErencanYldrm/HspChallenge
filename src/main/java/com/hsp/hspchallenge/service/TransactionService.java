@@ -14,6 +14,6 @@ import java.util.List;
 @Service
 public interface TransactionService {
     Transaction createTransaction(Transaction transaction);
-    List<Transaction> getTransactionsByUser(User user);
+    List<Transaction> getTransactionsByUserId(Long id);
     List<Transaction> getTransactionsByDateRange(LocalDate startDate, LocalDate endDate);
 }

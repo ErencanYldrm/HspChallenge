@@ -18,6 +18,10 @@ public class UserServiceImpl implements UserService{
         return createdUser;
     }
 
+    public User getUserById(Long id){
+        return userRepository.getUserById(id);
+    }
+
     public User loginUser(String email, String password) {
         User user = userRepository.findByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
