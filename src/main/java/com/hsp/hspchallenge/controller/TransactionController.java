@@ -6,11 +6,13 @@ import com.hsp.hspchallenge.repository.UserRepository;
 import com.hsp.hspchallenge.service.TransactionService;
 import com.hsp.hspchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,4 +46,11 @@ public class TransactionController {
         transactionService.deleteTransaction(transactionId);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/date/{startDate}")
+    public ResponseEntity<List<Transaction>> getTransactionsByDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
+        List<Transaction> transactions = transactionService.getTransactionsByDateAfter(startDate);
+        return ResponseEntity.ok(transactions);
+    }
+
 }

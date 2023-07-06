@@ -32,8 +32,8 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepository.findByUserId(id);
     }
 
-    public List<Transaction> getTransactionsByDateRange(LocalDate startDate, LocalDate endDate) {
-        return transactionRepository.findByDateBetween(startDate, endDate);
+    public List<Transaction> getTransactionsByDateAfter(LocalDate startDate) {
+        return transactionRepository.findByDateAfter(startDate);
     }
 
     public void deleteTransaction(Long transactionId) {

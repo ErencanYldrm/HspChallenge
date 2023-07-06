@@ -22,7 +22,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Instant date = Instant.now();
+    private LocalDate date = LocalDate.now();
 
     @Column(nullable = false)
     private BigDecimal amount;
