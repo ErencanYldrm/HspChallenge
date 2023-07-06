@@ -30,4 +30,8 @@ public class UserServiceImpl implements UserService{
     public void logoutUser() {
         currentUser = null;
     }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 }
