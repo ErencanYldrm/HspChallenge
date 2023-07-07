@@ -7,12 +7,8 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data:/postgres/data
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: 123
         POSTGRES_DB: HSP
 
-volumes:
-    postgres-data:
