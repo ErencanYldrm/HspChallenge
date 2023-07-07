@@ -17,6 +17,13 @@ import java.time.LocalDate;
 @Table(name = "transactions")
 public class Transaction {
 
+    public Transaction(Long id , BigDecimal amount , Long categoryId, Long userId){
+        this.id = id;
+        this.amount = amount;
+        this.categoryId = categoryId;
+        this.userId = userId;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

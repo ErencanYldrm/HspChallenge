@@ -18,7 +18,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/transaction")
 public class TransactionController {
+
+    @Autowired
     private final TransactionService transactionService;
+    @Autowired
     private final UserService userService;
 
     @Autowired
@@ -31,7 +34,7 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction newTransaction = transactionService.createTransaction(transaction);
-        User user = userService.getUserById(transaction.getUserId());
+        User user = userService.getUserById(newTransaction.getUserId());
         user.setBalance(user.getBalance().add(transaction.getAmount()));
         userService.updateUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTransaction);
@@ -48,7 +51,6 @@ public class TransactionController {
 
     @DeleteMapping("/delete/{transactionId}")
     public ResponseEntity<Void> deleteTransaction(@PathVariable Long transactionId) {
-        //update balance before deleting
         Transaction transaction = transactionService.getTransactionById(transactionId);
         User user = userService.getUserById(transaction.getUserId());
         user.setBalance(user.getBalance().subtract(transaction.getAmount()));
