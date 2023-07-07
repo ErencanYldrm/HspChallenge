@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -52,6 +54,30 @@ public class UserController {
     @PostMapping("/logout")
     public ResponseEntity<Void> logoutUser() {
         userService.logoutUser();
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User updatedUser = userService.updateUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
+        User user = userService.getUserById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.status(HttpStatus.OK).body(users);
+    }
+
+    @PutMapping("/update-balance")
+    public ResponseEntity<Void> updateUserBalance(@RequestBody BigDecimal amount) {
+        BigDecimal newAmount = amount;
+        userService.updateUserBalance(newAmount);
         return ResponseEntity.ok().build();
     }
 

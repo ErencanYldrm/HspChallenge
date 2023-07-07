@@ -1,4 +1,4 @@
-package com.hsp.hspchallenge.UserControllerTest;
+package com.hsp.hspchallenge.UserTest;
 
 import com.hsp.hspchallenge.controller.UserController;
 import com.hsp.hspchallenge.model.User;
@@ -27,7 +27,7 @@ class UserControllerTest {
 
 
     @Test
-    void createUser() {
+    void ItShouldCreateUser() {
         User user = new User("test","test","test", new BigDecimal("1000.00"));
         ResponseEntity<User> response = userController.createUser(user);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
@@ -45,7 +45,7 @@ class UserControllerTest {
     }
 
     @Test
-    void getCurrentUser() {
+    void ItShouldGetCurrentUser() {
         User user = new User("test","test2","test2", new BigDecimal("1000.00"));
         userService.createUser(user);
         Map<String, String> credentials = Map.of("email", "test2", "password", "test2");
