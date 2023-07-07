@@ -51,16 +51,10 @@ public class UserController {
 
 
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public ResponseEntity<Void> logoutUser() {
         userService.logoutUser();
         return ResponseEntity.ok().build();
-    }
-
-    @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        User updatedUser = userService.updateUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
     }
 
     @GetMapping("/{id}")

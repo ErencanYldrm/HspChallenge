@@ -1,8 +1,9 @@
-package com.hsp.hspchallenge.repository;
+package com.hsp.hspchallenge.TransactionTest;
 
 import com.hsp.hspchallenge.model.Category;
 import com.hsp.hspchallenge.model.Transaction;
 import com.hsp.hspchallenge.model.User;
+import com.hsp.hspchallenge.repository.TransactionRepository;
 import com.hsp.hspchallenge.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
