@@ -32,7 +32,7 @@ public class TransactionController {
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction newTransaction = transactionService.createTransaction(transaction);
         User user = userService.getUserById(transaction.getUserId());
-        user.setBalance(user.getBalance().subtract(transaction.getAmount()));
+        user.setBalance(user.getBalance().add(transaction.getAmount()));
         userService.updateUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTransaction);
     }
@@ -48,6 +48,11 @@ public class TransactionController {
 
     @DeleteMapping("/delete/{transactionId}")
     public ResponseEntity<Void> deleteTransaction(@PathVariable Long transactionId) {
+        //update balance before deleting
+        Transaction transaction = transactionService.getTransactionById(transactionId);
+        User user = userService.getUserById(transaction.getUserId());
+        user.setBalance(user.getBalance().subtract(transaction.getAmount()));
+        userService.updateUser(user);
         transactionService.deleteTransaction(transactionId);
         return ResponseEntity.ok().build();
     }

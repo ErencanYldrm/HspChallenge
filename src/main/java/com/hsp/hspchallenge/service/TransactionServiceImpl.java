@@ -44,5 +44,9 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepository.getTransactionsByCategoryId(id);
     }
 
+    public Transaction getTransactionById(Long id) {
+        return transactionRepository.findById(id).orElse(null);
+    }
+
 
 }

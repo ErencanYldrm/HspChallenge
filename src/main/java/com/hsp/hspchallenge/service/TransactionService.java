@@ -18,5 +18,7 @@ public interface TransactionService {
 
     void deleteTransaction(Long transactionId);
     List<Transaction> getTransactionsByCategoryId(Long id);
+
+    Transaction getTransactionById(Long id);
     List<Transaction> getTransactionsByDateAfter(LocalDate startDate);
 }
