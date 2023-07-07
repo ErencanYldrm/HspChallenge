@@ -52,11 +52,17 @@ Used Postgresql for Database Management
 (except as specified in the postman collection)
 
 PUT/user/update (update user information)
+
 GET/user/id/date (get user's money on that date)
+
 PUT/category/id (change category info)
+
 GET/category (get category info)
+
 GET/transaction (get all transactions)
+
 PUT/transaction/id (update transaction info)
+
 
 
 
