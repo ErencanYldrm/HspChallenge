@@ -7,7 +7,8 @@ It allows users to add, categorize, and manage their financial transactions effi
 
 #### Postman
 
-https://documenter.getpostman.com/view/23686567/2s93zGzdKW
+[Postman Collection](https://documenter.getpostman.com/view/23686567/2s93zGzdKW)
+
 Used postman for testing
 
 #### JUnit
